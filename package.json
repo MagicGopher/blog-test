@@ -1,0 +1,17 @@
+{
+  "name": "blog-test",
+  "author": {
+    "name": "MagicGopher",
+    "email": "gopher997@gmail.com"
+  },
+  "version": "1.0.0",
+  "description": "My Blog",
+  "devDependencies": {
+    "vitepress": "^1.2.3"
+  },
+  "scripts": {
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "preview": "vitepress preview src"
+  }
+}
