@@ -3,6 +3,13 @@ import { DefaultTheme } from "vitepress";
 export const zhNavbar: DefaultTheme.Config['nav'] = [
     // 首页
     { text: '首页', link: '/' },
+    // 数据库
+    {
+        text: '数据库',
+        items: [
+            { text: 'MySQL', link: '/docs/zh/数据库/MySQL.md' }
+        ]
+    },
     // 关于我
     {
         text: '关于我',
