@@ -17,13 +17,11 @@
     "build": "vitepress build src",
     "preview": "vitepress preview src",
     "log": "conventional-changelog -p angular -i ./src/docs/zh/关于我/更新日志.md -s -r 0 -n ./changelog.ts",
-    "update-log": "pnpm log && git add ./src/docs/zh/关于我/更新日志.md && git commit --amend --no-edit || true",
-    "prepare": "husky install",
-    "update-log-manual": "pnpm log && git add ./src/docs/zh/关于我/更新日志.md && git commit --amend --no-edit"
+    "update-log-pre-push": "pnpm log && git add ./src/docs/zh/关于我/更新日志.md && git diff-index --quiet HEAD || git commit --amend --no-edit"
   },
   "husky": {
     "hooks": {
-      "post-commit": "pnpm update-log"
+      "pre-push": "pnpm update-log-pre-push"
     }
   },
   "repository": {
