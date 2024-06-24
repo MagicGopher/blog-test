@@ -7,11 +7,27 @@
   "version": "1.0.0",
   "description": "My Blog",
   "devDependencies": {
+    "@types/node": "^18.19.32",
+    "conventional-changelog-cli": "^2.2.2",
+    "husky": "^9.0.11",
     "vitepress": "^1.2.3"
   },
   "scripts": {
     "dev": "vitepress dev src",
     "build": "vitepress build src",
-    "preview": "vitepress preview src"
+    "preview": "vitepress preview src",
+    "log": "conventional-changelog -p angular -i ./src/docs/zh/关于我/更新日志.md -s -r 0 -n ./changelog.ts",
+    "update-log": "pnpm log && git add ./src/docs/zh/关于我/更新日志.md && git commit --amend --no-edit || true",
+    "prepare": "husky install",
+    "update-log-manual": "pnpm log && git add ./src/docs/zh/关于我/更新日志.md && git commit --amend --no-edit"
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "pnpm update-log"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MagicGopher/blog-test.git"
   }
 }
