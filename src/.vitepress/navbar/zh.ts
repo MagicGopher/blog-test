@@ -7,7 +7,8 @@ export const zhNavbar: DefaultTheme.Config['nav'] = [
     {
         text: '数据库',
         items: [
-            { text: 'MySQL', link: '/docs/zh/数据库/MySQL.md' }
+            { text: 'MySQL', link: '/docs/zh/数据库/MySQL.md' },
+            { text: 'Redis', link: '/docs/zh/数据库/Redis.md' },
         ]
     },
     // 关于我
