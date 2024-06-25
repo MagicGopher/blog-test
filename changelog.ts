@@ -2,27 +2,47 @@ const flag = true
 const options = {
     writerOpts: {
         transform: (commit, context) => {
+            // let discard = true
             const issues = []
-            if (commit.type === "feat") {
-                commit.type = "✨ 新功能"
-            } else if (commit.type === "fix") {
-                commit.type = "🐛 Bug 修复"
-            } else if (commit.type === "perf") {
-                commit.type = "⚡ 性能优化"
-            } else if (commit.type === "revert" || commit.revert) {
-                commit.type = "⏪ 回退"
-            } else if (commit.type === "docs") {
-                commit.type = "📝 文档"
-            } else if (commit.type === "style") {
-                commit.type = "💄 风格"
-            } else if (commit.type === "refactor") {
-                commit.type = "♻ 代码重构"
-            } else if (commit.type === "test") {
-                commit.type = "✅ 测试"
-            } else if (commit.type === "build") {
-                commit.type = "👷 构建"
-            } else if (commit.type === "ci") {
-                commit.type = "🔧 配置"
+
+            // commit.notes.forEach(note => {
+            //   note.title = "重大变化"
+            //   discard = false
+            // })
+
+            // 提交类型
+            if (commit.type === 'feat') {
+                commit.type = '✨ Features | 新功能'
+            } else if (commit.type === 'fix') {
+                commit.type = '🐛 Bug Fixes | Bug 修复'
+            } else if (commit.type === 'perf') {
+                commit.type = '⚡ Performance Improvements | 性能优化'
+            } else if (commit.type === 'revert' || commit.revert) {
+                commit.type = '⏪ Reverts | 回退'
+            } /* else if (discard) {
+                return
+            } */ else if (commit.type === 'docs') {
+                commit.type = '📝 Documentation | 文档'
+            } else if (commit.type === 'style') {
+                commit.type = '💄 Styles | 风格'
+            } else if (commit.type === 'refactor') {
+                commit.type = '♻ Code Refactoring | 代码重构'
+            } else if (commit.type === 'test') {
+                commit.type = '✅ Tests | 测试'
+            } else if (commit.type === 'build') {
+                commit.type = '👷‍ Build System | 构建'
+            } else if (commit.type === 'ci') {
+                commit.type = '🔧 Continuous Integration | CI 配置'
+            } else if (commit.type === 'chore') {
+                commit.type = '⚙️ Chores | 其他更新'
+            } else if (commit.type === 'deps') {
+                commit.type = '📦 Dependencies | 依赖更新'
+            } else if (commit.type === 'merge') {
+                commit.type = '🔀 Merges | 合并'
+            } else if (commit.type === 'release') {
+                commit.type = '🚀 Releases | 发布'
+            } else if (commit.type === 'wip') {
+                commit.type = '🚧 Work in Progress | 进行中'
             }
 
             if (commit.scope === "*") {
@@ -59,7 +79,7 @@ const options = {
                 }
             }
 
-            commit.subject = `${commit.subject}<sub style="color: var(--vp-c-gray)">${commit.committerDate}</sub>`
+            commit.subject = `${commit.subject} <sub style="color: var(--vp-c-gray)"> ${commit.committerDate}</sub>`
 
             // remove references that already appear in the subject
             commit.references = commit.references.filter(reference => {
